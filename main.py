@@ -17,9 +17,10 @@ def t():
             client.send(b"GET / HTTP/1.1\n\r\nUser-Agent: Love\n\r\n")
           
             response = client.recv(2048).decode()
+            r = response
             f = open("websites/" + host, "w")
             f.write(response)
-            while len(response) > 0:
+            while len(r) > 0:
                 r = client.recv(2048)
                 f.write(r.decode())
                 f.flush()
